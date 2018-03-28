@@ -23,12 +23,12 @@ app = Flask(__name__)
 
 def upload_crashdumps():
     # TODO: attach attributes: version, etc - where to get them?
-    token='c45627c0e8e7877a9e72d8c62a333e3a3b10c7545a28038f840fb6d2707c319f'
+    token='a69873ff6acbff9a4ca61f4aa3a3e673a6027efd855473bd2e7da6c2eabf8093'
     # Use trial Backtrace.io account
     version=os.environ.get('VERSION', 'nover')
     # Do not upload crashdump if version has not been specified
     if version != 'nover':
-        url='https://kkdaemon.sp.backtrace.io:6098/post?format={}&token={}&version={}'.format('minidump', token, version)
+        url='https://dava.sp.backtrace.io:6098/post?format={}&token={}&version={}'.format('minidump', token, version)
         all_crashdumps=glob.glob('/debug/server/*.dmp')
         for crashdump in all_crashdumps:
             cmd = 'curl --data-binary @{} "{}"'.format(crashdump, url)
